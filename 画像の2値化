@@ -1,0 +1,10 @@
+X=imread('C:\Users\kanag_000\Pictures\授業関連\グループスタディ\group\IMG_5675.JPG');
+　% XにJPGファイルを格納
+
+BW = im2bw(X,0.355);
+　% BWにXの2値化ファイルを格納
+　%0.355は2値化する際のしきい値の設定
+ 
+figure, imshow(BW)
+　%画像の表示
+　
