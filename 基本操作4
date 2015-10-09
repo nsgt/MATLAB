@@ -1,0 +1,8 @@
+clear all;
+x=0;
+for ii=1:100
+   x=x+ii;
+end
+disp(x)
+
+%for文を用いて1から100までの数の総和を計算
