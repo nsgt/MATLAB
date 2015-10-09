@@ -5,3 +5,5 @@ imshow(RGB)
 I = rgb2gray(RGB);  %白黒化
 figure
 imshow(I)
+
+
