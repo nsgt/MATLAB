@@ -1,0 +1,10 @@
+clear all;
+xx=[2,4,8,5,1]
+x=0;
+for ii=1:5
+   x= x + xx(1,ii);
+end
+disp(x/5)
+
+
+% 配列xxをつくり、要素の平均値を求める
