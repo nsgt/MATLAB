@@ -1,0 +1,6 @@
+clear all;
+xx1=zeros(2,3)
+xx2=zeros(1,5)
+xx3=zeros(5,1)
+
+% zerosを用いて2行3列、1行5列、5行1列を作成
