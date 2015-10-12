@@ -1,0 +1,15 @@
+clear all; close all
+%①
+[x,fs]=wavread('aiueok_fem1');
+
+%②
+figure(1)
+plot(x)
+grid on
+
+%③
+figure(2)
+Len=length(x);
+t=[0:Len-1]/fs  %横ベクトルtの値、間隔を取得
+plot(t,x)
+grid on
