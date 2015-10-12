@@ -1,0 +1,14 @@
+clear all; close all
+%①
+[x,fs]=wavread('aiueok_fem1');
+
+%②
+Len=length(x);
+
+%③
+disp('このデータは')
+disp(Len/fs)
+disp('秒です')
+
+%④
+wavplay(x,fs,'sync')
