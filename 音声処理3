@@ -1,0 +1,22 @@
+clear all; close all
+%①
+[xx,fs]=audioread('aiueok_fem1.wav');
+
+%②
+Len=length(xx);
+disp('データの長さは')
+disp(Len)
+disp('です')
+
+%③
+mae=xx(1:Len/2);
+playblocking(audioplayer(mae,fs))    %音データの前半部分の再生
+
+%③と④の間の無音設定
+zz=zeros(fs/2,1)
+playblocking(audioplayer(zz,fs))
+
+%④
+ato=xx(Len/2:Len);
+playblocking(audioplayer(ato,fs))        %音データの後半部分の再生
+
