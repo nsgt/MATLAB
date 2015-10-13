@@ -1,0 +1,14 @@
+%①
+[xx,fs]=audioread('aiueok_fem1.wav');
+
+%②
+Len=length(xx);
+
+x1=xx(1:Len/5);
+playblocking(audioplayer(x1,fs))       %最初の2秒を再生
+
+zz=zeros(fs/2,1);
+playblocking(audioplayer(zz,fs))      %無音
+
+x2=xx(Len/5:Len*2/5);
+playblocking(audioplayer(x2,fs))      %2から4秒を再生
