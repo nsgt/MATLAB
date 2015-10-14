@@ -1,0 +1,39 @@
+clear all; close all
+
+[x,fs]=audioread('aiueok_fem1.wav');
+
+figure(1)
+plot(x)
+grid on
+
+Len=length(x);
+figure(2);
+a=x(9000:12000);    %「あ」の拡大表示
+plot(a)
+grid on
+
+  figure(3);        %3行3列に図形を並べる
+  subplot(3,3,1)   %あ
+  plot(a)
+  grid on
+
+  subplot(3,3,2)   
+  b=x(13000:16000); %い
+  plot(b)
+  grid on
+  
+  subplot(3,3,3)   
+  c=x(17000:20000); %う
+  plot(c)
+  grid on
+  
+    subplot(3,3,4)   
+  d=x(21000:23000); %え
+  plot(d)
+  grid on
+  
+    subplot(3,3,5)   
+  f=x(24500:27500); %お
+  plot(f)
+  grid on
+  
