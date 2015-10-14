@@ -1,0 +1,12 @@
+clear all; close all
+
+[x,fs]=audioread('aiueok_fem1.wav');
+
+plot(x)
+grid on
+
+a=x(5001:25000); 
+playblocking(audioplayer(a,fs))  %5001から25000番目まで再生
+
+  eee=x(21000:23000);            % え だけ再生
+  playblocking(audioplayer(eee,fs))
