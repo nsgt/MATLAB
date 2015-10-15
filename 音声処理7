@@ -1,0 +1,17 @@
+clear all; close all
+
+[x,fs]=audioread('aiueok_fem1.wav');
+
+plot(x)
+grid on
+
+
+aaa=x(9000:12000);  %あ
+iii=x(13000:16000); %い
+uuu=x(17000:20000); %う 
+eee=x(21000:23000); %え
+ooo=x(24500:27500); %お
+kaa=x(33000:36000); %え
+
+out=[aaa; kaa; iii; kaa; ooo];
+playblocking(audioplayer(out,fs))  %「あかいかお」を発音させる
