@@ -1,0 +1,30 @@
+clear all; close all
+%①
+fs=8000;
+
+%②
+t=[1:fs]/fs;
+
+%③
+y500=sin(2*pi*500*t);
+
+%④
+plot(t,y500)
+hold on
+axis([0 0.02 -2 2])
+
+%⑤
+plot(t/2,y500/2)
+plot(t,y500,'r')
+
+
+%⑥
+wavplay(y500,fs)     %サンプリング周波数必要
+
+z=zeros(1,fs*0.5);      %⑧
+wavplay(z,fs)
+
+%⑦
+y1000=sin(2*pi*1000*t);
+plot(t,y1000,'g')
+wavplay(y1000,fs)
