@@ -1,0 +1,15 @@
+clear all; close all
+fs=8000;
+t=[1:fs/2]/fs;       %0.5秒
+t2=[1:fs]/fs;        %1.0秒
+y500=sin(2*pi*500*t);
+y1000=sin(2*pi*1000*t2);
+
+z=zeros(1,fs*0.5);
+
+out=[y500, z, y500, z, y500, z, y1000];
+
+%wavplay(out,fs)
+playblocking(audioplayer(out,fs))
+filename='name_jihou.wav';
+audiowrite(filename,out,fs)
