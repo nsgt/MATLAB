@@ -1,0 +1,41 @@
+clear all; close all
+%①
+fs=48000;
+
+%②
+ out=zeros(1,fs*2);
+
+%③
+a=1;
+for t=1:fs/5:fs*2
+   out(1,a)=1;
+   a=a+fs/5;
+end
+
+%④
+wavplay(out,fs)
+% playblocking(audioplayer(out,fs))
+%MATLAB 2015a
+
+%⑤
+randn('state',0);  %乱数の初期化
+out1=randn(1,fs)/10;
+wavplay(out1,fs)
+% playblocking(audioplayer(out1,fs))
+%MATLAB 2015a
+
+%⑥
+out2=out1(1,0.005*fs)/10;
+
+%⑦
+b=1;
+for t=1:fs/5:fs*2
+   out2(1,b)=1;
+   b=b+fs/5;
+end
+wavplay(out2,fs)
+% playblocking(audioplayer(out2,fs))
+%MATLAB 2015a
+
+%out2は④と同じになる
+
