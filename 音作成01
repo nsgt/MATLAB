@@ -1,0 +1,16 @@
+clear all; close all
+%①
+wnoise=randn(16000,1);
+
+%②
+a=wnoise(1:200);
+plot (a)
+
+%③
+wnoise2=wnoise/ max(abs(wnoise));
+
+%④
+fs=8000;
+wavplay(wnoise2,fs)
+ %playblocking(audioplayer(wnoise2,fs))
+ %MATLAB 2015a
