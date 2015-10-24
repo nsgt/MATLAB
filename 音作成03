@@ -1,0 +1,21 @@
+clear all; close all
+%①
+nokogiri1=1:1:40;
+
+%②
+nokogiri2=0.01:0.01:0.4;
+
+%③ 
+nokogiriA=nokogiri2;
+for i=1:1:256
+    nokogiri3=[nokogiriA,nokogiri2];
+    nokogiriA=nokogiri3;
+end
+
+%④
+ plot(nokogiri3)
+
+fs=8000; 
+wavplay(out,fs)
+%playblocking(audioplayer(nokogiri3,fs))
+
