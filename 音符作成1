@@ -1,0 +1,15 @@
+clear all; close all
+%①
+fs=8000;
+x=261.6; %ドの周波数
+t=[1:fs]/fs;
+do=sin(2*pi*x*t);
+wavplay(do,fs)
+
+%②
+do1=sin(2*pi*x*2*t);  %ドの1オクターブ上
+do2=sin(2*pi*x*(1/2)*t);  %ドの1オクターブ下
+z=zeros(1,fs*0.5);
+
+yy=[do, z, do1, z, do2];
+wavplay(yy,fs)
