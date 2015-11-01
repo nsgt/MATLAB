@@ -1,0 +1,12 @@
+fs=8000;
+t=[1:fs]/fs; %1.0秒
+a=4.605170186;
+b=1;
+X=0:t:1;
+Y=exp(-a*X);
+plot(X,Y)
+grid on
+title('指数減衰')
+xlabel('time[sec.]')
+ylabel('ampitude')
+axis([0 1 0 1])
