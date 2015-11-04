@@ -1,0 +1,30 @@
+%5.3.3
+clear all; close all
+%①
+fs=8000;
+x=261.6; %ドの周波数
+t=[1:fs/2]/fs;
+do=sin(2*pi*x*t);
+re=sin(2*pi* x*2^(2/12) *t);
+mi=sin(2*pi* x*2^(4/12) *t);
+fa=sin(2*pi* x*2^(5/12) *t);
+so=sin(2*pi* x*2^(7/12) *t);
+ra=sin(2*pi* x*2^(9/12) *t);
+si=sin(2*pi* x*2^(11/12) *t);
+do1=sin(2*pi* x*2^(12/12) *t);
+
+domiso=do+mi+so;
+domiso=domiso/max(abs(domiso))*0.99;
+wavplay(domiso,fs)
+
+domisodo1=do+mi+so+do1;
+domisodo1=domisodo1/max(abs(domisodo1))*0.99;
+wavplay(domisodo1,fs)
+
+refasi=re+fa+si;
+refasi=refasi/max(abs(refasi))*0.99;
+wavplay(refasi,fs)
+
+domisodo1=do+mi+so+do1;
+domisodo1=domisodo1/max(abs(domisodo1))*0.99;
+wavplay(domisodo1,fs)
