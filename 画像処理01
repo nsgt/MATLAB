@@ -1,0 +1,47 @@
+% 課題１　標本化感覚と空間解像度
+% 画像をダウンサンプリングして（標本化間隔を大きくして）
+% 表示せよ．（Lenna以外の画像を用いよ）
+
+clear; close all;
+
+ ORG=imread('Penguins.jpg'); % 原画像の入力
+imagesc(ORG); axis image; % 画像の表示
+pause; % 一時停止
+
+IMG = imresize(ORG,0.5); % 画像の縮小
+IMG2 = imresize(IMG,2,'box'); % 画像の拡大
+imagesc(IMG2); axis image; % 画像の表示
+pause; % 一時停止
+
+IMG = imresize(ORG,0.5); % 画像の縮小
+IMG2 = imresize(IMG,2,'box'); % 画像の拡大
+imagesc(IMG2); axis image; % 画像の表示
+pause; % 一時停止
+
+IMG = imresize(IMG,0.5); % 画像の縮小
+IMG2 = imresize(IMG,4,'box'); % 画像の拡大
+imagesc(IMG2); axis image; % 画像の表示
+pause; % 一時停止
+
+IMG = imresize(IMG,0.5); % 画像の縮小
+IMG2 = imresize(IMG,8,'box'); % 画像の拡大
+imagesc(IMG2); axis image; % 画像の表示
+pause; % 一時停止
+
+IMG = imresize(IMG,0.5); % 画像の縮小
+IMG2 = imresize(IMG,16,'box'); % 画像の拡大
+imagesc(IMG2); axis image; % 画像の表示
+pause; % 一時停止
+
+IMG = imresize(IMG,0.5); % 画像の縮小
+IMG2 = imresize(IMG,32,'box'); % 画像の拡大
+imagesc(IMG2); axis image; % 画像の表示
+
+% 考察
+% キー入力をし上から順番にプログラムを実行していくと、取り込んだ画像の解像度
+% が荒くなっていった(モザイク画像になっていった)。
+% アンチエイリアス処理を使用して、イメージを 2 の係数で縮小した後に元の画像に
+% 拡大したのが原因だと考えられる。変数IMGに入っている画像データはプログラムが
+% 進むごとに縮小の係数が増えていき、最後のプログラムでは32倍にまで縮小されて
+% しまっている。これを32倍に拡大することによって元の画像に戻す際に
+% ダウンサンプリングが影響し画像が荒くなってしまったと考えられる。
