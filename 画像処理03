@@ -1,0 +1,52 @@
+% 課題３　閾値処理 
+% 閾値を4パターン設定し,閾値処理した画像を示せ． 
+% 下記はサンプルプログラムである． 
+% 課題作成にあたっては「Lenna」以外の画像を用いよ．
+
+ 
+clear; % 変数のオールクリア 
+close all;
+ 
+ 
+ORG=imread('Penguins.jpg'); % 原画像の入力 
+ORG= rgb2gray(ORG); % カラー画像を白黒濃淡画像へ変換
+
+ 
+imagesc(ORG); colormap(gray); colorbar; % 画像の表示 
+xlabel('x');
+ylabel('y');
+pause; %一時停止
+ 
+ 
+IMG = ORG > 64; % 輝度値が64以上の画素を1，その他を0に変換 
+imagesc(IMG); colormap(gray); colorbar; 
+xlabel('x');
+ylabel('y');
+pause;
+
+ 
+IMG = ORG > 96; 
+imagesc(IMG); colormap(gray); colorbar; 
+xlabel('x');
+ylabel('y');
+pause;
+
+ 
+IMG = ORG > 128; 
+imagesc(IMG); colormap(gray); colorbar; 
+xlabel('x');
+ylabel('y');
+pause;
+
+ 
+IMG = ORG > 192; 
+imagesc(IMG); colormap(gray); colorbar; 
+xlabel('x');
+ylabel('y');
+
+% 考察
+% まず元の画像をグレースケール化し、白黒の画像を表示させている。
+% 次に閾値(RGB値の平均の明るさを利用)を64から192まで32づつ増やしそれぞれの画像を比較すると、
+% 閾値が増えるごとに全体的に画像が黒くなっていっているのが確認できた。
+% これは 輝度値が閾値の値以上の画素を1(黒)，その他を0(白)に変換しているため、
+% 閾値が増えるにつれ黒に変換される領域が増え、全体的に画素が黒に変換されていったと考えられる。
