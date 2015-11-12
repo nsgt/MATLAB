@@ -1,0 +1,11 @@
+clear; close all;
+fs=8000;
+t=[1:fs/1]/fs;  %1秒分
+w=2*pi*500;  %ω=2πf
+a=sin(w*t);
+b=(1/3*sin(2*w*t));
+c=(1/9*sin(3*w*t));
+d=(1/30*sin(4*w*t));
+x=a+b+c+d;
+plot(t,x);
+playblocking(audioplayer(x,fs))
