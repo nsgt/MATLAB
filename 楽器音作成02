@@ -1,0 +1,25 @@
+clear; close all;
+%ラッパ
+fs=8000;
+t=[1:fs/1]/fs;  %1秒分
+w=2*pi*500;  %ω=2πf
+x=sin(w*t)+sin(2*w*t)+sin(3*w*t)+sin(4*w*t)+sin(5*w*t)+sin(6*w*t);
+playblocking(audioplayer(x,fs))
+
+%木管楽器
+w=2*pi*200;
+y=(0.5*sin(w*t))+(0.3*sin(3*w*t))+(0.2*sin(5*w*t))+(0.1*sin(7*w*t));
+playblocking(audioplayer(y,fs))
+
+%鉄琴
+w=2*pi*888;
+fs=32000;
+t = 0:1/fs:0.5;  
+do = sin(w*t)+0.1*sin(2.75*w*t)+sin(5.27*w*t)+0.1*sin(8.71*w*t);    
+playblocking(audioplayer(do,fs))
+
+%木管　だんだん強く
+a=0:1/4000:1;
+fs=8000;
+y(1:4001)=a.*y(1:4001);
+playblocking(audioplayer(y,fs))
