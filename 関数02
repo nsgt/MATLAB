@@ -1,0 +1,17 @@
+clear all; close all;
+%①
+fs=8000;
+x=523;
+t=[1:fs/1]/fs;  %1秒分
+x1=sin(2*pi*x*t);
+playblocking(audioplayer(x1,fs))
+% wavplay(x1,fs)
+
+%②
+a=log(0.1)/(-0.5);
+ee=exp((-a)*t);
+plot(t,ee);
+
+x2=x1 .* ee;  %要素ごとにかける
+playblocking(audioplayer(x2,fs))
+% wavplay(x2,fs)
