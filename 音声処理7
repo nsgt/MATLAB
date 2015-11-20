@@ -5,7 +5,7 @@ clear all; close all
 plot(x)
 grid on
 
-
+%範囲指定
 aaa=x(9000:12000);  %あ
 iii=x(13000:16000); %い
 uuu=x(17000:20000); %う 
