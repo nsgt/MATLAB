@@ -1,0 +1,24 @@
+fs=8000;
+t=[1:fs]/fs;  %1秒
+f=1000;
+xx=sin(2*pi*f*t)-(1/2)*sin(2*pi*2*f*t)+1/3*sin(2*pi*3*f*t);
+xx=xx/max(abs(xx))*0.8;
+xx=xx';
+figure(1);
+plot(xx)
+axis([1 30 -1 1]);  %xmin xmax ymin ymax
+playblocking(audioplayer(xx,fs))
+
+
+N=1000;
+m=0;
+x=xx(m+1:m+N);
+xxx=x.*hanning(N);
+z=[xxx; zeros(N,1)];
+X=fft(z);
+Xamp=abs(X(1:N+1));
+ff=[0:N] *(4000/N);
+figure(2);
+plot(ff,Xamp);
+xlabel('周波数(Hz)');
+
