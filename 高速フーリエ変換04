@@ -1,0 +1,39 @@
+clear; close all;
+fs=8000;
+[x,fs]=audioread('hokeiha_01.wav');
+a=x(1:50);
+figure(1);
+plot(a)
+playblocking(audioplayer(a,fs))
+
+
+aa=x(1:5000);
+N=1024;    %2^10
+m=0;
+a1=aa(m+1:m+N);
+aa1=a1.*hanning(N);
+a=[aa1; zeros(N,1)]
+A1=fft(a);
+Aamp1=abs(A1(1:N+1));
+ff=[0:N] *(4000/N);
+figure(2);
+plot(ff,Aamp1);
+grid on
+xlabel('周波数(Hz)');
+
+
+tt=[1:fs]/fs; %1秒
+f1=500;
+xx1=sin(2*pi*f1*tt)*120;
+f2=1500;
+xx2=sin(2*pi*f2*tt)*40;
+f3=2500;
+xx3=sin(2*pi*f3*tt)*25;
+f4=3500;
+xx4=sin(2*pi*f4*tt)*17.5;
+
+xx=xx1+xx2+xx3+xx4;
+xx=xx(1:50);
+figure(3);
+plot(xx)
+playblocking(audioplayer(xx,fs))
