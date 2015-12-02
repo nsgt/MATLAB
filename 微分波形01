@@ -1,0 +1,40 @@
+clear close all;
+fs=100;
+ff=1;
+t=[1:fs]/fs;
+xx=sin(2*pi*ff*t);
+figure(1)
+plot(xx,'b')
+grid on
+hold on
+xlabel('サンプル');
+
+N=length(xx);
+yy=(xx(2:N)-xx(1:N-1))*fs;   %微分
+y=yy/(2*pi);
+plot(y,'r')
+grid on
+hold on
+
+
+% ⑤
+ff2=2;
+xx2=sin(2*pi*ff2*t);
+N2=length(xx2);
+yy2=(xx2(2:N2)-xx2(1:N2-1))*fs;   %微分
+y2=yy2/(2*pi);
+plot(y2,'g')
+hold on
+
+ff4=4;
+xx4=sin(2*pi*ff4*t);
+N4=length(xx4);
+yy4=(xx4(2:N4)-xx4(1:N4-1))*fs;   %微分
+y4=yy4/(2*pi);
+plot(y4,'k')
+hold on
+
+%結果
+%2Hzのとき、振幅が1Hz時の2倍
+%4Hzのとき、振幅が1Hzの時4倍
+%になった
