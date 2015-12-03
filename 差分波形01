@@ -1,0 +1,49 @@
+[xx0,fs]=wavread('piano_001');
+% [xx0,fs]=audioread('piano_001.wav');
+xx=xx0(1:fs*2);
+
+%1回差分
+N=length(xx);
+yy=(xx(2:N)-xx(1:N-1));
+y=yy/(2*pi);
+
+% 2回差分
+N=length(xx);
+yy2=(y(2:N-1)-y(1:N-2));
+y2=yy2/(2*pi);
+
+% 3回差分
+N=length(xx);
+yy3=(y2(2:N-2)-y2(1:N-3));
+y3=yy3/(2*pi);
+ 
+y=y/max(abs(y));
+y2=y2/max(abs(y2));
+y3=y3/max(abs(y3));
+
+% playblocking(audioplayer(y,fs))
+wavplay(y,fs)
+pause(0.25)
+% playblocking(audioplayer(y2,fs))
+wavplay(y2,fs)
+pause(0.25)
+% playblocking(audioplayer(y3,fs))
+wavplay(y3,fs)
+
+
+
+% % 関数を用いたやり方
+% x=diff(xx);          %1回差分
+% x2=diff(xx,2);       %2回差分
+% x3=diff(xx,3);       %3回差分
+% x=x/max(abs(x));
+% x2=x2/max(abs(x2));
+% x3=x3/max(abs(x3));
+% % playblocking(audioplayer(x,fs))
+% wavplay(x,fs)
+% pause(0.25)
+% % playblocking(audioplayer(x2,fs))
+% wavplay(x2,fs)
+% pause(0.25)
+% % playblocking(audioplayer(x3,fs))
+% wavplay(x3,fs)
