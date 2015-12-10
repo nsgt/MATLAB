@@ -1,0 +1,60 @@
+clear close all;
+
+% [xx0,fs]=audioread('piano_001.wav');
+[xx0,fs]=wavread('piano_001');
+xx=xx0(1:fs*2);
+yy1=zeros(1,length(xx));
+for n=1:88193
+    yy1(n)=(xx(n)+xx(n+1)+xx(n+2)+xx(n+3)+xx(n+4)+xx(n+5)+xx(n+6)+xx(n+7))/8;
+end
+
+
+yy2=zeros(1,length(yy1));
+for n=1:88193
+    yy2(n)=(yy1(n)+yy1(n+1)+yy1(n+2)+yy1(n+3)+yy1(n+4)+yy1(n+5)+yy1(n+6)+yy1(n+7))/8;
+end
+yy3=zeros(1,length(yy2));
+for n=1:88193
+    yy3(n)=(yy2(n)+yy2(n+1)+yy2(n+2)+yy2(n+3)+yy2(n+4)+yy2(n+5)+yy2(n+6)+yy2(n+7))/8;
+end
+yy4=zeros(1,length(yy3));
+for n=1:88193
+    yy4(n)=(yy3(n)+yy3(n+1)+yy3(n+2)+yy3(n+3)+yy3(n+4)+yy3(n+5)+yy3(n+6)+yy3(n+7))/8;
+end
+yy5=zeros(1,length(yy4));
+for n=1:88193
+    yy5(n)=(yy4(n)+yy4(n+1)+yy4(n+2)+yy4(n+3)+yy4(n+4)+yy4(n+5)+yy4(n+6)+yy4(n+7))/8;
+end
+yy6=zeros(1,length(yy5));
+for n=1:88193
+    yy6(n)=(yy5(n)+yy5(n+1)+yy5(n+2)+yy5(n+3)+yy5(n+4)+yy5(n+5)+yy5(n+6)+yy5(n+7))/8;
+end
+yy7=zeros(1,length(yy6));
+for n=1:88193
+    yy7(n)=(yy6(n)+yy6(n+1)+yy6(n+2)+yy6(n+3)+yy6(n+4)+yy6(n+5)+yy6(n+6)+yy6(n+7))/8;
+end
+yy8=zeros(1,length(yy7));
+for n=1:88193
+    yy8(n)=(yy7(n)+yy7(n+1)+yy7(n+2)+yy7(n+3)+yy7(n+4)+yy7(n+5)+yy7(n+6)+yy7(n+7))/8;
+end
+yy9=zeros(1,length(yy8));
+for n=1:88193
+    yy9(n)=(yy8(n)+yy8(n+1)+yy8(n+2)+yy8(n+3)+yy8(n+4)+yy8(n+5)+yy8(n+6)+yy8(n+7))/8;
+end
+yy10=zeros(1,length(yy9));
+for n=1:88193
+    yy10(n)=(yy9(n)+yy9(n+1)+yy9(n+2)+yy9(n+3)+yy9(n+4)+yy9(n+5)+yy9(n+6)+yy9(n+7))/8;
+end
+
+
+% playblocking(audioplayer(xx,fs))
+wavplay(yy1,fs)
+yy1=yy1/max(abs(yy1));
+% playblocking(audioplayer(yy1,fs))
+wavplay(yy1,fs)
+pause(0.5)
+% playblocking(audioplayer(xx,fs))
+wavplay(yy1,fs)
+yy10=yy10/max(abs(yy10));
+% playblocking(audioplayer(yy10,fs))
+wavplay(yy1,fs)
