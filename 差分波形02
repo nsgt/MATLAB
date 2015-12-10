@@ -1,0 +1,29 @@
+clear close all;
+
+% [xx,fs]=audioread('Favorite_mono.wav');
+[xx,fs]=wavread('Favorite_mono');
+
+%1回差分
+N=length(xx);
+y=(xx(2:N)-xx(1:N-1));
+yy=y/(2*pi);
+
+
+%聞き比べ
+% playblocking(audioplayer(xx,fs))
+wavplay(xx,fs)
+pause(0.5)
+yy1=yy/max(abs(yy));
+% playblocking(audioplayer(yy1,fs))
+wavplay(yy1,fs)
+
+plot(xx)
+grid on
+xlabel('サンプル')
+hold on
+
+plot(yy,'r')
+hold on
+
+%結果
+% 1回差分した波形の大きさが小さくなった
