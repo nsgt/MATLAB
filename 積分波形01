@@ -1,0 +1,39 @@
+clear close all;
+fs=100;
+ff=1;
+t=[1:fs]/fs;
+xx=sin(2*pi*ff*t);
+
+figure(1)
+plot(xx,'b')
+grid on
+xlabel('サンプル')
+hold on
+
+yy=zeros(1,length(xx));
+for n=1:97
+    yy(n)=(xx(n)+xx(n+1)+xx(n+2)+xx(n+3))/4;
+end
+plot(yy,'r')
+hold on
+
+ff10=10;
+xx10=sin(2*pi*ff10*t);
+yy10=zeros(1,length(xx10));
+for n=1:97
+    yy10(n)=(xx10(n)+xx10(n+1)+xx10(n+2)+xx10(n+3))/4;
+end
+plot(yy10,'g')
+hold on
+
+ff20=20;
+xx20=sin(2*pi*ff20*t);
+yy20=zeros(1,length(xx20));
+for n=1:97
+    yy20(n)=(xx20(n)+xx20(n+1)+xx20(n+2)+xx20(n+3))/4;
+end
+plot(yy20,'k')
+hold on
+
+%結果
+% 周波数が高くなるにつれ、振幅が低減した
