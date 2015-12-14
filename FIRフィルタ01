@@ -1,0 +1,28 @@
+clear close all;
+% ①
+NN=512;
+bb1=[1,-1,zeros(1,NN-2)];
+
+% ②
+BB1=fft(bb1);
+bb1=abs(BB1);
+x=bb1(1:NN/2+1);
+plot(x)
+hold on
+
+% ③
+bb2=[ones(1,4)/4,zeros(1,NN-4)];  %先頭4つが0.25、残りすべて0行列
+BB2=fft(bb2);
+bb2=abs(BB2);
+y=bb2(1:NN/2+1);
+plot(y,'r')
+hold on
+
+% ④
+bb3=[ones(1,20)/20,zeros(1,NN-20)];
+BB3=fft(bb3);
+bb3=abs(BB3);
+z=bb3(1:NN/2+1);
+plot(z,'k')
+
+
