@@ -1,0 +1,26 @@
+% 課題7　ダイナミックレンジの拡大 
+% 画素のダイナミックレンジを０から２５５にせよ．  
+% 課題作成にあたっては「Lenna」以外の画像を用いよ．  
+
+
+ORG = imread('Penguins.jpg'); % 画像の読み込み  
+imagesc(ORG); colormap(gray); colorbar; % 画像の表示 
+pause; 
+histogram(ORG); % 濃度ヒストグラムを生成、表示
+pause;
+
+
+ORG = double(ORG); 
+ORG = tonemap(ORG);
+imagesc(ORG); colormap(gray); colorbar; % 画像の表示 
+pause; 
+
+ORG = uint8(ORG); % この行について考察せよ 
+histogram(ORG); % 濃度ヒストグラムを生成、表示 
+
+%動作、考察
+%元画像を読み込み、ヒストグラム表示
+%ORGをdouble(64bit)にし、tonemapにてハイダイナミックレンジに変換下の後に画像表示
+%最後にORGをunit8で8bitにし、ヒストグラムを表示
+%unit8ではORGファイルを8ビットの整数に変換する機能がある。今回はdoubleを用いて一度、64bitの整数でハイダイナミックレンジに変換した後、その64bitの
+%ORGに対してunit8を用いて8bitへ、つまりダイナミックレンジを255に変換している。(8ビットにすることで容量を減らしている)
