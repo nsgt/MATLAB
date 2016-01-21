@@ -1,0 +1,28 @@
+% 課題６　画像の二値化 
+% 課題作成にあたっては「Lenna」以外の画像を用いよ． 
+
+
+clear; % 変数のオールクリア 
+ORG=imread('Penguins.jpg'); % 原画像の入力 
+ORG = rgb2gray(ORG); 
+imagesc(ORG); colormap(gray); colorbar; % 画像の表示 
+pause; % 一時停止 
+
+[xsize,ysize]=size(ORG);  %size(ORG)=[768,1024]
+S= 150;
+for i=1:xsize
+for j=1:ysize
+    if (ORG(i, j) > S)
+         ORG(i, j)=255;     %白
+else
+    ORG(i, j)=0;            %黒
+end
+end
+end
+imagesc(ORG); colormap(gray); colorbar;
+
+%動作、考察
+%まず取り込んだ画像ファイルを変数ORGに代入し、その変数ORGに対してRGBのグレースケール化を行い、画像を表示する。
+%次に元の画像ファイル(サイズ768*1024)に対して、1画素づつfor文とif文にて判別し2値化している。
+%閾値Sを定め、iをx軸のサイズ、jをy軸のサイズとし、if文にて閾値より大きければその画素を白に変え、そうでなければ黒に変える。
+%この動作を768*1024の画素ひとつひとつに対して行う。
