@@ -1,0 +1,34 @@
+% 課題８ ラベリング 
+% 二値化された画像の連結成分にラベルをつけよ．  
+% 課題作成にあたっては「Lenna」以外の画像を用いよ．  
+ 
+
+ORG = imread('FMV.jpg'); % 画像の読み込み 
+ORG = rgb2gray(ORG); % 白黒濃淡画像に変換 
+imagesc(ORG); colormap(gray); colorbar; % 画像の表示 
+pause; 
+
+
+%閾値150で2値化
+[xsize,ysize]=size(ORG);  %size(ORG)=[768,1024]
+S= 150;
+for i=1:xsize
+for j=1:ysize
+    if (ORG(i, j) > S)
+         ORG(i, j)=255;     %白
+else
+    ORG(i, j)=0;            %黒
+end
+end
+end
+imagesc(ORG); colormap(gray); colorbar;
+pause; 
+
+
+ORG = bwlabel(ORG); 
+imagesc(ORG); colormap(jet); colorbar; % 画像の表示
+
+
+%動作、考察
+%まず白黒濃淡画像に変換した後に閾値150で2値化をする。その後関数bwlabelを用いて2次元画像に対し、倍精度のラベル行列の出力を得る(連結性は4または8)。
+%ラベリングされた3つ目の画像結果を見ると、2値化されたイメージ内の連結要素が識別されて、各連結要素に一意なラベルが割り当てられていることがわかる。
