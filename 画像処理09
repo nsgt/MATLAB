@@ -1,0 +1,26 @@
+% 課題９ メディアンフィルタと先鋭化 
+% メディアンフィルターを適用し，ノイズ除去を体験せよ． 
+% 各自，Lenna以外の画像を用いよ． 
+
+
+ORG = imread('Penguins.jpg'); % 画像の読み込み 
+ORG = rgb2gray(ORG); % 白黒濃淡画像に変換 
+imagesc(ORG); colormap(gray); colorbar; % 画像の表示 
+pause; 
+
+J = imnoise(ORG,'salt & pepper',0.02);      %ゴマ塩ノイズを付ける
+imagesc(J); colormap(gray); colorbar;       % 画像の表示 
+pause; 
+
+K = wiener2(J,[3 3],500);                   %2次元適応ノイズフィルタ
+imagesc(K); colormap(gray); colorbar;       % 画像の表示 
+pause;  
+
+R= medfilt2(J);                             %メディアンフィルタ
+imagesc(R); colormap(gray); colorbar;       % 画像の表示 
+pause;  
+
+%動作、考察
+%元画像をグレイスケール化し表示。そして関数imnoiseを用いてノイズを付けたものを変数Jとして表示。その変数Jの画像を関数wiener2を用いて、ノイズ除去し表示。
+%次に変数Jの画像を巻子medfilt2を使用して、ノイズ除去し表示。2次元適応ノイズフィルタでは一定パワーの加法性ノイズにより画質が低下したグレースケールイメージをローパスフィルターで処理し、メディアンフィルタでは各出力ピクセルが対応する入力ピクセルの近傍のピクセル値の平均処理をしている。
+%画像結果を見ると、メディアンフィルタの方がノイズ除去に適していることが分かる。
